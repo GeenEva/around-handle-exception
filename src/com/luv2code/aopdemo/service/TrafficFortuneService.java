@@ -29,7 +29,10 @@ public class TrafficFortuneService {
 		if(tripWire) {
 			throw new RuntimeException("Major accident! Highway is closed!");
 		}
-		return getFortune();
+		
+		return null;
 	}
+	
+	
 	
 }
