@@ -42,7 +42,7 @@ public class MyDemoLoggingAspect {
 				
 				myLogger.warning(e.getMessage());
 				
-				result = "Major accident! But your private jet is on it's way to pick you up!";
+				throw e;
 			};
 		
 		long endStamp = System.currentTimeMillis();
