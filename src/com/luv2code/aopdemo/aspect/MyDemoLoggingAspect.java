@@ -33,18 +33,23 @@ public class MyDemoLoggingAspect {
 		
 		long beginStamp = System.currentTimeMillis();
 		
-			//Execute the target method
-			//The joinpoint is the target object, so here it is the method of the fortune service.
-			//The method gives back the String, so that is put into the result.
-		Object result = theProcedingJoinPoint.proceed();
+		Object result = null;
+				
+			try {
+				result = theProcedingJoinPoint.proceed() ;
+				}
+			catch (Exception e) {
+				
+				myLogger.warning(e.getMessage());
+				
+				result = "Major accident! But your private jet is on it's way to pick you up!";
+			};
 		
 		long endStamp = System.currentTimeMillis();
 		
 		long duration = endStamp - beginStamp;
 		
 		myLogger.info("\n====>> Duration: " + duration / 1000.0 + " seconds");
-		
-		myLogger.info("\nThe result is: " + result);
 		
 		return result;
 	}
